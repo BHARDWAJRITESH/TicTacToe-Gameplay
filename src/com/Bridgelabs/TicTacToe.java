@@ -91,9 +91,10 @@ public class TicTacToe {
 				displayingBoard();
 				emptyCellIndexUser = 1;
 			}else {
-				System.out.println("\n Space is occupied______________________ Try another cell index");				
+				System.out.println("\n***Space is occupied Try another cell index***");				
 			}
-		}		
+		}	
+		choosePlayer(1);
 	}		
 	void computerInput() {
 		System.out.println("***** Computer Turn *****");
@@ -105,10 +106,10 @@ public class TicTacToe {
 				displayingBoard();
 				emptyCellIndexComputer = 1;
 			}else {
-				System.out.println("\n Space is occupied______________________ Try another cell index");
+				System.out.println("\n***Space is occupied Try another cell index***");
 			}
 		}
-		
+		choosePlayer(0);
 	}
 	
 	/**
@@ -119,6 +120,36 @@ public class TicTacToe {
 		return gameBoard[cellIndex] == ' ';
 	}
 	
+	/**
+	 * 
+	 * creating method to toss who will play first
+	 */
+	void tossToPlayFirst() {
+		System.out.println("\n\n**Flip  the coin  to decide who play first**");
+		int choosePlayer = random.nextInt(2);
+		if(choosePlayer == 0) {
+			System.out.println("\n***User has won the toss and play fist***");
+			choosePlayer(0);
+		}else {
+			System.out.println("\n***Computer has won the toss and will play first***");
+			choosePlayer(1);
+		}
+		
+	}
+	/**
+	 * 
+	 * Creating method to switch player according to toss
+	 */
+	void choosePlayer(int choosePlayer) {
+		if(choosePlayer == 0) {
+			gameBoardInputUser();
+		}else if (choosePlayer == 1) {
+			computerInput();
+		}else {
+			System.out.println("***** Game finished *****");
+			System.out.println(0);			
+		}		
+	}
 	
 	public static void main(String[] args) {
 		System.out.println("********************************************************\n" +"    WELCOME TO THE TIC TAC TOE GAME"+ "\n********************************************************");	
@@ -126,8 +157,10 @@ public class TicTacToe {
 		ticTacToe.chooseOptionForPlay();
 		ticTacToe.boardCreation();
 		ticTacToe.displayingBoard();
-		ticTacToe.gameBoardInputUser();
-		ticTacToe.computerInput();
+		ticTacToe.tossToPlayFirst();
+//		ticTacToe.gameBoardInputUser();
+//		ticTacToe.computerInput();
+		
 	}
 
 }
