@@ -77,21 +77,48 @@ public class TicTacToe {
 	 * creating method so user can input its desired position
 	 * enter value from 1-9
 	 * Computer input is also made by help of random
+	 * adding empty cell condition to both computer and user 
 	 */
-	void gameBoardInput() {
+	void gameBoardInputUser() {
 		System.out.println();
 		System.out.println("\n\n***** Player Turn *****");
-		System.out.println("Enter your choice position between(1-9)");
-		int playerPosition = scanner.nextInt();
-		gameBoard[playerPosition] = playerLetter;
-		displayingBoard();
+		int emptyCellIndexUser = 0;
+		while(emptyCellIndexUser == 0) {
+			System.out.println("Enter your choice position between(1-9)");
+			int playerPosition = scanner.nextInt();
+			if(emptyCellIndex(playerPosition)) {
+				gameBoard[playerPosition] = playerLetter;
+				displayingBoard();
+				emptyCellIndexUser = 1;
+			}else {
+				System.out.println("\n Space is occupied______________________ Try another cell index");				
+			}
+		}		
 	}		
 	void computerInput() {
 		System.out.println("***** Computer Turn *****");
-		int computerPosition = random.nextInt(9) + 1;
-		gameBoard[computerPosition] = computerLetter;
-		displayingBoard();
+		int emptyCellIndexComputer=0;
+		while (emptyCellIndexComputer==0) {
+			int computerPosition = random.nextInt(9) + 1;
+			if(emptyCellIndex(computerPosition)) {
+				gameBoard[computerPosition] = computerLetter;
+				displayingBoard();
+				emptyCellIndexComputer = 1;
+			}else {
+				System.out.println("\n Space is occupied______________________ Try another cell index");
+			}
+		}
+		
 	}
+	
+	/**
+	 * 
+	 * Creating method to check empty cell index in board
+	 */
+	boolean emptyCellIndex(int cellIndex) {
+		return gameBoard[cellIndex] == ' ';
+	}
+	
 	
 	public static void main(String[] args) {
 		System.out.println("********************************************************\n" +"    WELCOME TO THE TIC TAC TOE GAME"+ "\n********************************************************");	
@@ -99,7 +126,7 @@ public class TicTacToe {
 		ticTacToe.chooseOptionForPlay();
 		ticTacToe.boardCreation();
 		ticTacToe.displayingBoard();
-		ticTacToe.gameBoardInput();
+		ticTacToe.gameBoardInputUser();
 		ticTacToe.computerInput();
 	}
 
