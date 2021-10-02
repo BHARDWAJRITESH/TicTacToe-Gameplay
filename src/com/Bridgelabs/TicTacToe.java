@@ -27,8 +27,7 @@ public class TicTacToe {
 	 * Taking input from player to choose option
 	 */
 	void chooseOptionForPlay() {
-
-		
+	
 		int condition = 0;
 		while(condition == 0) {
 			System.out.println("\nChoose your option for gameplay\n Press 1 for 'X'\n Press 2 for 'O'\n Enter your choice ");
@@ -50,11 +49,27 @@ public class TicTacToe {
 			}
 		}
 	}
+	/**
+	 * 
+	 * creating method for displaying board
+	 * leaving 0 index
+	 */
+	void displayingBoard() {
+		
+		System.out.println(gameBoard[1] + "   | "+ gameBoard[2] +"| " + gameBoard[3]);
+        System.out.println("----+--+----");
+        System.out.println(gameBoard[4] + "   | "+ gameBoard[5] + "| " + gameBoard[6]);
+        System.out.println("----+--+----");
+        System.out.println( gameBoard[7] + "   | "+ gameBoard[8] +"| " + gameBoard[9]);
+        
+		
+	}
 	public static void main(String[] args) {
 		System.out.println("********************************************************\n" +"    WELCOME TO THE TIC TAC TOE GAME"+ "\n********************************************************");	
 		TicTacToe ticTacToe = new TicTacToe();
 		ticTacToe.chooseOptionForPlay();
 		ticTacToe.boardCreation();
+		ticTacToe.displayingBoard();
 	}
 
 }
